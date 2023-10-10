@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/my.css">
+    <title>영화 상세 정보</title>
+</head>
+<body>
+    <div class="detail-container">
+        <h1>영화 상세 정보</h1>
+        <p class="detail-item"><strong>영화 제목:</strong> 1947 보스톤</p>
+        <p class="detail-item"><strong>개봉 날짜:</strong> 2023-09-27</p>
+        <p class="detail-item"><strong>주연 배우:</strong> 임시완, 박은빈, 하정우</p>
+        <p class="detail-item"><strong>상영 시간:</strong> 108분</p>
+        <a href="edit.html" class="button">수정</a>
+        <a class="button" onclick="onclickDelete()">삭제</a>
+        <a href="index.html" class="button">돌아가기</a>
+    </div>
+
+    <script>
+        function onclickDelete() {
+            if (confirm("삭제하시겠습니까?")) {
+                alert("삭제되었습니다.");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+</html>
