@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/my.css">
+    <title>영화 수정</title>
+</head>
+<body>
+    <div class="edit-container">
+        <h1>영화 수정</h1>
+        <form class="edit-form" id="editMovieForm">
+            <label for="movieTitle">영화 제목:</label>
+            <input type="text" id="movieTitle" name="movieTitle" required>
+            <label for="releaseDate">개봉 날짜:</label>
+            <input type="date" id="releaseDate" name="releaseDate" required>
+            <label for="cast">주연 배우:</label>
+            <input type="text" id="cast" name="cast" required>
+            <label for="runningTime">상영 시간(단위:분):</label>
+            <input type="number" id="runningTime" name="runningTime" required>
+            <input type="submit" value="수정" class="button" onclick="confirmUpdate()">
+            <a href="view.html" class="button">돌아가기</a>
+            <a href="index.html" class="button">홈으로</a>
+        </form>
+    </div>
+
+    <script>
+        // 페이지 로드 시, 이전 페이지에서 전달된 영화 데이터를 입력 필드에 채워 넣음
+        window.onload = function() {
+            var movieData = getMovieData(); // 이전 페이지에서 데이터 가져오는 함수 호출
+            if (movieData) {
+                document.getElementById("movieTitle").value = movieData.title;
+                document.getElementById("releaseDate").value = movieData.releaseDate;
+                document.getElementById("cast").value = movieData.cast;
+                document.getElementById("runningTime").value = movieData.runningTime;
+            }
+        }
+
+        function getMovieData() {
+            return {
+                title: "1947 보스톤",
+                releaseDate: "2023-09-27",
+                cast: "임시완, 박은빈, 하정우",
+                runningTime: 108
+            };
+        }
+
+        function confirmUpdate() {
+            if (validateForm()) {
+                if (confirm("수정하시겠습니까?")) {
+                    window.location.href = "index.html";
+                    alert("수정되었습니다.");
+                }
+            }
+        }
+
+        function validateForm() {
+            // 모든 입력 필드가 값이 비어있지 않은지 확인
+            var movieTitle = document.getElementById("movieTitle").value;
+            var releaseDate = document.getElementById("releaseDate").value;
+            var cast = document.getElementById("cast").value;
+            var runningTime = document.getElementById("runningTime").value;
+
+            if (movieTitle !== "" && releaseDate !== "" && cast !== "" && runningTime !== "") {
+                return true; // 모든 필드가 채워져 있음
+            } else {
+                return false; // 적어도 하나 이상의 필드가 비어 있음
+            }
+        }
+    </script>
+</body>
+</html>
